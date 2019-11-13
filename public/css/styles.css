@@ -1,0 +1,170 @@
+.main{
+    margin-top: 120px;
+}
+
+footer{
+
+    background-color: #005DAA;
+    color:#FFF;
+    bottom: 0;
+    width: 100% !important;
+}
+
+/*mapa en pagina inicio*/
+.map-links{
+    margin-bottom: 25px;
+}
+.img_mapa{
+    widows: 500px;
+    height: 450px;
+}
+
+/*transparencia*/
+h2{
+    color: #005DAA;
+    margin: 10px;
+}
+
+.articulo-item{
+    text-align: center;
+    position: relative !important;
+}
+.articulo-item:hover{
+    cursor: pointer;
+    background-color: #CCC;
+    color:#FFF;
+}
+.articulo-item .active{
+    background-color: #CCC;
+}
+.item-art{
+    height: 100% !important;
+}
+.articulo-item img{
+    width: 300px;
+}
+
+
+.item-parrafo:hover{
+    cursor: pointer;
+    background-color: #005DAA !important;
+    color:#FFF;
+}
+
+.item-inciso:hover{
+    cursor: pointer;
+    background-color: #005DAA !important;
+    color:#FFF;
+}
+
+
+.link-art{
+    color:#005DAA !important;
+    font-size: 16px !important;
+}
+
+/**/
+.ver{
+    background-color: #005DAA !important;
+    color:#FFF;
+    cursor: pointer;
+}
+
+
+
+/*noticias home*/
+.show-more{
+    padding: 5px;
+    text-decoration: none;
+    background-color: #005DAA;
+    color:#FFF;
+}
+.show-more:hover{
+    text-decoration: none;
+    color:#FFF;
+    background-color: #669ECC;
+}
+
+
+
+
+/*transparencia v2*/
+.articulo{
+    display: none;
+}
+.documentos{
+    display: none;
+    height: 400px;
+    overflow-y: scroll;
+}
+.parrafo{
+    display: none;
+}
+.item-parraf{
+    position: relative;
+    min-height: 30px;
+    border-bottom: #CCC 1px solid;
+    cursor: pointer;
+}
+.item-parraf:hover{
+    background-color: #CCC;
+}
+.item-parraf .title{
+    width:90%;
+}
+.item-parraf i{
+    font-size: 20px;
+    margin-top:-20px;
+}
+.item-parraf i:hover{
+    cursor: pointer;
+    color:#669ECC;
+}
+.item-parraf a{
+    color:#005DAA !important;
+    position: relative;
+    cursor: pointer;
+}
+
+.lista-incisos{
+    display: none;
+
+}
+.icon-show{
+    float: right;
+    color:#005DAA;
+    width: 45px;
+}
+.parrafos{
+    display: none;
+    position: absolute;
+}
+.text-parrafo{
+    color:red;
+    margin-left: 10px;
+}
+
+#docs{
+    max-height: 500px;
+    overflow-y: scroll;;
+    position: fixed;
+    margin:50% 50%;
+    width: 200px;
+}
+.inciso{
+    color:#005DAA !important;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+
+
+/*menu sidebar new*/
+.sidebar{
+    list-style: none;
+    position: absolute !important;
+    overflow-y: scroll;
+}
+.sidebar li{
+    color:#000;
+}

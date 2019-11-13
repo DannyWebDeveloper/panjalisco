@@ -1,0 +1,9 @@
+
+/*menu sidebar new*/
+.sidebar{
+    list-style: none;
+    position: absolute !important;
+}
+.sidebar li{
+    color:#000;
+}
