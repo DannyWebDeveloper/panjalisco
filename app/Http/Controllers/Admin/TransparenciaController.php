@@ -256,4 +256,13 @@ class TransparenciaController extends Controller
         return back()
             ->with('info', 'Documento agregado con éxito');
     }
+
+    //elimina documento
+    public function deleteDocumento($id)
+    {
+        //
+        $doc = ArticuloDocumento::find($id);
+        $doc->delete();
+        return back()->with('info', 'El documento se ha eliminado correctamente');
+    }
 }

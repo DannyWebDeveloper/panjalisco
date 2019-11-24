@@ -2,7 +2,7 @@
 @section('content')
 <link rel="stylesheet" href="{!! asset('css/slider.css') !!}">
 
-    <div class="container justity-center">
+    <div class="container">
         <div class="row">
             <div class="col-md-10 col-offset-2">
                 <div class="card card-default">

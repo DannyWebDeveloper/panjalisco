@@ -26,8 +26,8 @@
         {!! Form::select('visible',['1' => 'Visible','0'=>'No visible'],null,['class'=>'form-control','placeholder'=>'Seleccione una opcion']) !!}
 </div>
 <div class="form-group">
-
     {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
+    <a class="btn btn-warning btn-sm"  href="{{ url('adm/adminenlaces') }}">Cancelar</a>
 </div>
 
 @section('scripts')

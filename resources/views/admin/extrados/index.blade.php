@@ -9,7 +9,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         Extrados
-                        <a href="{{route('adminextrados.create')}}" class="btn btn-sm btn-primary right">Nuevo Extrado</a>
+                        <a href="{{route('adminextrados.create')}}" class="btn btn-sm btn-primary btn-right">Nuevo Extrado</a>
                     </div>
 
                 <div class="card-body">

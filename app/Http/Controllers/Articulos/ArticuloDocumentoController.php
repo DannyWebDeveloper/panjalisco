@@ -22,14 +22,14 @@ class ArticuloDocumentoController extends Controller
     }
 
     public static function getDocumentosParrafo($id_parrafo){
-        $documentos_parrafo = ArticuloDocumento::where('id_parrafo', $id_parrafo)->get();
+        $documentos_parrafo = ArticuloDocumento::where('id_parrafo', $id_parrafo)->where('visible', 1)->get();
         //$incisos = ArticuloInciso::all();
         return view('web.transparencia.documentos', compact('documentos_parrafo'));
         //return $incisos;
     }
 
     public static function getDocumentosInciso($id_inciso){
-        $documentos_inciso = ArticuloDocumento::where('Id_Inciso', $id_inciso)->get();
+        $documentos_inciso = ArticuloDocumento::where('Id_Inciso', $id_inciso)->where('visible', 1)->get();
         //$incisos = ArticuloInciso::all();
         //return view('web.transparencia', compact('documentos_inciso'));
         //return back()->with('info', 'hola');

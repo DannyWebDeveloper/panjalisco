@@ -1,4 +1,3 @@
-{{  Form::hidden('id', $categoria->id)}}
 
 <div class="form-group">
 
@@ -12,8 +11,8 @@
     {{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug']) }}
 </div>
 <div class="form-group">
-
     {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
+    <a class="btn btn-warning btn-sm"  href="{{ url('adm/admincategorias') }}">Cancelar</a>
 </div>
 
 @section('scripts')

@@ -51,7 +51,7 @@ class UsuarioController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'status' => ['required']
+            'estatus' => ['required']
         ]);
         if ($validator->fails()) {
             return redirect()->route('adminusers.create')

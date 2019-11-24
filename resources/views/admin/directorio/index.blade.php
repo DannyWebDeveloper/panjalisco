@@ -9,7 +9,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         Directorio
-                        <a href="{{route('admindirectorio.create')}}" class="btn btn-sm btn-primary right">Nuevo</a>
+                        <a href="{{route('admindirectorio.create')}}" class="btn btn-sm btn-primary btn-right">Nuevo</a>
                     </div>
 
                 <div class="card-body">

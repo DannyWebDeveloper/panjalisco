@@ -9,7 +9,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         Imagenes de acceso a mapas
-                        <a href="{{route('adminmapas.create')}}" class="btn btn-sm btn-primary right"> Crear</a>
+                        <a href="{{route('adminmapas.create')}}" class="btn btn-sm btn-primary btn-right"> Crear</a>
 
                     </div>
 

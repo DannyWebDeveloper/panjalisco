@@ -9,7 +9,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         Boletines
-                        <a href="{{route('adminboletines.create')}}" class="btn btn-sm btn-primary right">Nuevo boleitn</a>
+                        <a href="{{route('adminboletines.create')}}" class="btn btn-sm btn-primary btn-right">Nuevo boleitn</a>
                     </div>
 
                 <div class="card-body">

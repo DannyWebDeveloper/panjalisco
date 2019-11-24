@@ -3,7 +3,7 @@
 @section('content')
     <div class="contaniner">
         <div class="row">
-            <div class="col-md-8 col-offset-2">
+            <div class="col-md-10">
                 <div class="card card-default">
                     <div class="card-header">
                             Crear Noticia

@@ -4,13 +4,12 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
+    <div class="row">
+        <div class="col-md-12">
                 <div class="card card-default">
                     <div class="card-header">
                         Lista de Documentos
-                        <a href="{{route('parrafoForm')}}" class="btn btn-sm btn-primary right"> Crear</a>
-                    </div>
+                     </div>
 
                 <div class="card-body">
                     <table class="table table-striped table-hover">

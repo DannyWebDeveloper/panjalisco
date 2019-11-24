@@ -9,7 +9,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         Lista de categorias
-                        <a href="{{route('admincategorias.create')}}" class="btn btn-sm btn-primary right"> Crear</a>
+                        <a href="{{route('admincategorias.create')}}" class="btn btn-sm btn-primary btn-right"> Crear</a>
                     </div>
 
                 <div class="card-body">

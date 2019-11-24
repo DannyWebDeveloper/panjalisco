@@ -33,12 +33,14 @@
                     {{ Form::label('Orden', 'Orden') }}
                     {{ Form::text('Orden', '', ['class' => 'form-control']) }}
                     </div>
-                    <div class="form-group text-right">
-                        {{ Form::submit('Guardar', ['class' => 'btn btn-bg btn-primary']) }}
+                    <div class="form-group">
+                        {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
+                        <a class="btn btn-warning btn-sm"  href="{{ url('adm/admintransparencia/articulos') }}">Cancelar</a>
                     </div>
 
 
                     {!! Form::close() !!}
+
                     </div>
 
                 </div>

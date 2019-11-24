@@ -10,7 +10,7 @@
                     </div>
 
                 <div class="card-body">
-                    {!! Form::open(['route' => 'categorias.store']) !!}
+                    {!! Form::open(['route' => 'admincategorias.store']) !!}
 
                         @include('admin.categorias.partials.form')
 

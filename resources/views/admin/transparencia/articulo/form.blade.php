@@ -35,7 +35,8 @@
                     {{ Form::text('Orden', $articulo->Orden, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group text-right">
-                        {{ Form::submit('Guardar', ['class' => 'btn btn-bg btn-primary']) }}
+                        {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
+                        <a class="btn btn-warning btn-sm"  href="{{ url('adm/admintransparencia/articulos') }}">Cancelar</a>
                     </div>
                     {!! Form::close() !!}
                     </div>

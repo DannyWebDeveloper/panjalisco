@@ -9,7 +9,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         Comité
-                        <a href="{{route('admincomite.create')}}" class="btn btn-sm btn-primary right">Nuevo Integrante</a>
+                        <a href="{{route('admincomite.create')}}" class="btn btn-sm btn-primary btn-right">Nuevo Integrante</a>
                     </div>
 
                 <div class="card-body">

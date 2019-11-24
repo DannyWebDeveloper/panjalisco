@@ -61,7 +61,8 @@
 </div>
     {{ Form::hidden('orden', 0) }}
 <div class="form-group text-right">
-    {{ Form::submit('Guardar', ['class' => 'btn btn-bg btn-primary']) }}
+    {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
+    <a class="btn btn-warning btn-sm"  href="{{ url('adm/adminmenus') }}">Cancelar</a>
 </div>
 
 @section('scripts')

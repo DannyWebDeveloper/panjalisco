@@ -31,6 +31,7 @@
 <div class="form-group">
 
     {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
+    <a class="btn btn-warning btn-sm"  href="{{ url('adm/adminsocials') }}">Cancelar</a>
 </div>
 
 @section('scripts')

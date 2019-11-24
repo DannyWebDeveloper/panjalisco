@@ -30,7 +30,7 @@ class NoticiaController extends Controller
     public function index()
     {
         //
-        $noticias = Noticia::where('id_user', Auth::user()->id)->orderBy('id', 'DESC')->paginate();
+        $noticias = Noticia::orderBy('id', 'DESC')->paginate();
         return view('admin.noticias.index', compact('noticias'));
     }
 
@@ -144,7 +144,7 @@ class NoticiaController extends Controller
     public function destroy($id)
     {
         $noticia = Noticia::find($id);;
-        $this->authorize('pass', $noticia);
+        //$this->authorize('pass', $noticia);
 
         $noticia->delete();
         return back()->with('info', 'Eliminado correctamente');

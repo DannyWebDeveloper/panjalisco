@@ -11,7 +11,7 @@
                     </div>
 
                 <div class="card-body">
-                    {!! Form::model($categoria, ['route' => ['categorias.update', $categoria->id], 'method' => 'PUT']) !!}
+                    {!! Form::model($categoria, ['route' => ['admincategorias.update', $categoria->id], 'method' => 'PUT']) !!}
 
                         @include('admin.categorias.partials.form')
 

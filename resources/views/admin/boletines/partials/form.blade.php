@@ -25,8 +25,8 @@
        {{ Form::text('fecha', null,  ['class' => 'form-control datepicker' ]) }}
 </div>
 <div class="form-group">
-
     {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
+    <a class="btn btn-warning btn-sm"  href="{{ URL::previous() }}">Cancelar</a>
 </div>
 
 @section('scripts')

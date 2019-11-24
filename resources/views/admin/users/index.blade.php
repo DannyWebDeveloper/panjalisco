@@ -8,7 +8,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         Usuarios
-                         <a href="{{route('adminusers.create')}}" class="btn btn-sm btn-primary right"> Crear</a>
+                         <a href="{{route('adminusers.create')}}" class="btn btn-sm btn-primary btn-right"> Crear</a>
                     </div>
                 <div class="card-body">
                     <table class="table table-striped table-hover">

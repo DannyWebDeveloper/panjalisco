@@ -19,7 +19,7 @@
                     @if(count($documentos)>0)
                     <table class="table">
                     <thead>
-                    <tr><th>Documento</th> <th>Fecha documento</th><th>Visible</th> </tr>
+                    <tr><th>Documento</th> <th>Fecha documento</th><th>Visible</th> <th colspan="2"></th></tr>
                     </thead>
                     <tbody>
                         @foreach($documentos as $doc)
@@ -38,6 +38,12 @@
                                 NO
                                 @endif
                                 </td>
+                       <td>
+                            <a class="btn btn-sm edit-doc" href="{{ url('adm/admintransparencia/documentos/edit/'.$doc->id)}}">Editar</a>
+                        </td>
+                                <td>
+                            <a class="btn btn-danger" onclick="return confirm('¿Está seguro que desea eliminar el documento?')" href="{{route('documentoDelete',['id' => $doc->id])}}">Eliminar</a>
+                        </td>
                         </tr>
                         @endforeach
                     </tbody>

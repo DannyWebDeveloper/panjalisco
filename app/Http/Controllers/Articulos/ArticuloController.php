@@ -52,7 +52,7 @@ class ArticuloController extends Controller
         $Meses = array('01'=>'Enero', '02'=>'Febrero', '03'=>'Marzo', '04'=>'Abril', '05'=>'Mayo', '06'=>'Junio',
         '07'=>'Julio', '08'=>'Agosto', '09'=>'Septiembre', '10'=>'Octubre', '11'=>'Noviembre', '12'=>'Diciembre');
 
-        $documentos_inciso = ArticuloDocumento::where('Id_Inciso', $id)->orderBy('FechaDocumento', 'DESC')->get()->groupBy(function($item) {
+        $documentos_inciso = ArticuloDocumento::where('Id_Inciso', $id)->where('visible', 1)->orderBy('FechaDocumento', 'DESC')->get()->groupBy(function($item) {
             //return $item->FechaDocumento;
             return date('Y', strtotime($item->FechaDocumento));
             //return Carbon::parse($item->FechaDocumento)->format('Y');
@@ -68,7 +68,7 @@ class ArticuloController extends Controller
         $Meses = array('01'=>'Enero', '02'=>'Febrero', '03'=>'Marzo', '04'=>'Abril', '05'=>'Mayo', '06'=>'Junio',
         '07'=>'Julio', '08'=>'Agosto', '09'=>'Septiembre', '10'=>'Octubre', '11'=>'Noviembre', '12'=>'Diciembre');
 
-        $documentos_parrafo = ArticuloDocumento::where('id_parrafo', $id)->orderBy('FechaDocumento', 'DESC')->get()->groupBy(function($item) {
+        $documentos_parrafo = ArticuloDocumento::where('id_parrafo', $id)->where('visible', 1)->orderBy('FechaDocumento', 'DESC')->get()->groupBy(function($item) {
             //return $item->FechaDocumento;
             return date('Y', strtotime($item->FechaDocumento));
             //return Carbon::parse($item->FechaDocumento)->format('Y');

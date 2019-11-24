@@ -9,7 +9,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         Sliders
-                        <a href="{{route('adminsliders.create')}}" class="btn btn-sm btn-primary right"> Crear</a>
+                        <a href="{{route('adminsliders.create')}}" class="btn btn-sm btn-primary btn-right"> Crear</a>
                     </div>
 
                 <div class="card-body">

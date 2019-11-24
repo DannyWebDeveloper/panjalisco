@@ -4,12 +4,12 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row ">
         <div class="col-md-10">
                 <div class="card card-default">
                     <div class="card-header">
                         Lista de menus
-                        <a href="{{route('adminmenus.create')}}" class="btn btn-sm btn-primary right"> Crear</a>
+                        <a href="{{route('adminmenus.create')}}" class="btn btn-sm btn-primary btn-right"> Crear</a>
                     </div>
 
                 <div class="card-body">

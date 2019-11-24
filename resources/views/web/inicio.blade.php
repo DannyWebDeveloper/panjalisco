@@ -1,7 +1,7 @@
 @extends('layouts.header')
 <main role="main">
 
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div id="myCarousel" class="carousel slide container" data-ride="carousel">
     <ol class="carousel-indicators">
     @foreach($sliders as $sli)
         @if($loop->first)

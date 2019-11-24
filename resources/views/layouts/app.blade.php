@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/functions.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +19,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style-admin.css') }}" rel="stylesheet">
+
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -103,7 +106,8 @@
         <br><br>
                         @guest
                         @else
-                        <ul class="sidebar">
+                        <a id="menu-movil" onclick="myFunction()">Menu</a>
+                        <ul class="sidebar" id="sidebar">
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admincategorias.index') }}">Categorias</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('adminnoticias.index') }}">Noticias</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('adminpaginas.index') }}">Páginas</a></li>
@@ -115,7 +119,7 @@
                                 <a class="dropdown-item" href="{{ route('articulos') }}">Articulos</a>
                                 <a class="dropdown-item" href="{{ route('parrafos')  }}">Parrafos</a>
                                 <a class="dropdown-item" href="{{ route('incisos')}}">Incisos</a>
-                                <a class="dropdown-item" href="{{ route('documentos') }}">Documentos</a>
+
                                 </div>
                             </li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('adminboletines.index') }}">Boletines</a></li>

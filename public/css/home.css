@@ -136,13 +136,13 @@ nav{
 
  /*icon whatsapp*/
  .icon-whats{
-     width: 80px;
+     width: 50px;
     position: fixed;
     bottom: 50%;
     margin-left: 5px;
  }
  .icon-whats:hover{
-     width: 85px;
+     width: 55px;
      margin-left: 3px;
  }
 /*redes sociales*/

@@ -15,7 +15,6 @@
                         @include('admin.transparencia.documentos.partials.form')
                     {!! Form::close() !!}
 
-                    <hr>
 
 
                 </div>

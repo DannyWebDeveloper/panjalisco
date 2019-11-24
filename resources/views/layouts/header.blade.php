@@ -56,7 +56,7 @@
       @foreach($menus as  $i => $menu)
         @if($menu->nivel == 'Padre')
         <li class="nav-item {{ ($menu->cantidad_subs > 0) ? 'dropdown' : ''  }}">
-         @if($menu->link_externo == null)
+         @if($menu->link_externo == null && $menu->id_pagina != null)
             @foreach($slugs as $slug)
                 @if($slug->id == $menu->id)
                 <a class="nav-link {{ ($menu->cantidad_subs  > 0) ? 'dropdown-toggle': '' }} " href="/{{ $slug->slug }}" @if($menu->cantidad_subs  > 0) id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" @endif>
@@ -81,7 +81,7 @@
                 </div>
                 @endif
             @endforeach
-        @else
+        @elseif($menu->link_externo != null && $menu->id_pagina == null)
             <a class="nav-link {{ ($menu->cantidad_subs  > 0) ? 'dropdown-toggle': '' }} " href="{{ $menu->link_externo }}" target="_blank" @if($menu->cantidad_subs  > 0) id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" @endif>
                 {{ $menu->nombre }}
             </a>
@@ -101,7 +101,26 @@
 
                     @endforeach
                 </div>
+        @else
+            <a class="nav-link {{ ($menu->cantidad_subs  > 0) ? 'dropdown-toggle': '' }} " href="#" target="_blank" @if($menu->cantidad_subs  > 0) id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" @endif>
+                {{ $menu->nombre }}
+            </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    @foreach($menus as $sub)
+                        @if($sub->nivel == 'Hijo' && $sub->id_padre == $menu->id)
+                          @if($sub->link_externo == null)
+                            @foreach($slugs as $slug)
+                                @if($slug->id == $sub->id)
+                                <a class="dropdown-item" href="/{{ $slug->slug }}">{{ $sub->nombre }}</a>
+                                @endif
+                            @endforeach
+                          @else
+                          <a class="dropdown-item" href="/{{ $sub->link_externo }}" target="_blank">{{ $sub->nombre }}</a>
+                          @endif
+                        @endif
 
+                    @endforeach
+                </div>
          @endif
         </li>
         @endif

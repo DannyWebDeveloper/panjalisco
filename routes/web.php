@@ -149,7 +149,8 @@ Route::put('adm/admintransparencia/documentos/update/{id}', 'Admin\Transparencia
 //
 Route::post('adm/admintransparencia/documentos/add/P', 'Admin\TransparenciaController@addDocumentoParrafo')->name('documentoAddParrafo');
 Route::post('adm/admintransparencia/documentos/add/I', 'Admin\TransparenciaController@addDocumentoInciso')->name('documentoAddInciso');
-
+//elimina documento
+Route::get('adm/admintrasparencia/documentos/delete/{id}', 'Admin\TransparenciaController@deleteDocumento')->name('documentoDelete');
 
 
 //elimina un archivo de alguna pagina

@@ -1,9 +1,37 @@
 
 /*menu sidebar new*/
-.sidebar{
+#sidebar{
     list-style: none;
     position: absolute !important;
+    height: 88vh;
+    width:15%;
 }
-.sidebar li{
+#sidebar li{
     color:#000;
 }
+
+.card-body img{
+ max-width: 30%;
+}
+.btn-right{
+    float: right !important;
+}
+#menu-movil{
+    display: none;
+    cursor: pointer;
+
+}
+
+@media only screen and (max-width: 600px) {
+    #menu-movil{
+        display: block;
+    }
+    #sidebar{
+        display: none;
+        z-index: 9999;
+    }
+    .contenedor-general{
+        float: left !important;
+        width:100% !important;
+    }
+  }

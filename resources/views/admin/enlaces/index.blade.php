@@ -9,7 +9,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         Enlaces
-                        <a href="{{route('adminenlaces.create')}}" class="btn btn-sm btn-primary right">Nuevo Enlace</a>
+                        <a href="{{route('adminenlaces.create')}}" class="btn btn-sm btn-primary btn-right">Nuevo Enlace</a>
                     </div>
 
                 <div class="card-body">
