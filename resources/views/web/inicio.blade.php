@@ -47,13 +47,13 @@
     <div class="row">
             @foreach($noticias as $nota)
             <div class="col-md-4">
-                <div class="card border-primary flex-md-row mb-4 shadow-sm h-md-250">
+                <div class="card border-primary flex-md-row mb-4 shadow-sm h-md-250 item-noticia">
                 <img class="card-img-left flex-auto d-none d-lg-block" alt="{{ $nota->titulo }}" src="{{ $nota->img }}" style="width: 150px; height: 150px;">
                     <div class="card-body d-flex flex-column align-items-start">
 
                         <strong class="d-inline-block mb-2 text-primary">{{$nota->nombre }}</strong>
                         <h6 class="mb-0">
-                            <a class="text-dark" href="#">{{ $nota->titulo }}</a>
+                            <a class="text-dark"  href="{{ route('noticia', $nota->slug_noticia)  }}">{{ $nota->titulo }}</a>
                         </h6>
                         <div class="mb-1 text-muted small">{{$nota->created_at->format("m/d/Y")}}</div>
                         <p class="card-text mb-auto resumen-nota">{{ $nota->extracto }}</p>

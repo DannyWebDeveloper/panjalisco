@@ -4,17 +4,17 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="col-md-10">
                 <div class="card card-default">
                     <div class="card-header">
                         Extrados
-                        <a href="{{route('adminextrados.create')}}" class="btn btn-sm btn-primary btn-right">Nuevo Extrado</a>
+                        <a href="{{route('adminestrados.create')}}" class="btn btn-sm btn-primary btn-right">Nuevo Extrado</a>
                     </div>
 
                 <div class="card-body">
                     <div class="text-justify-right" style="width:100%; text-align:right;">
-                        <a href="{{route ('admincategoriasextrado.index')}}" class="btn btn-sm btn-primary">Categorias de extrado</a>
+                        <a href="{{route ('admincategoriasextrado.index')}}" class="btn btn-sm btn-primary">Categorias de estrado</a>
                     </div>
                     <br>
                     <table class="table table-striped table-hover">
@@ -49,12 +49,12 @@
                                 @endif
                                </td>
                                 <td width ="10px">
-                                <a href="{{ route('adminextrados.edit', $val->id) }}" class="btn">
+                                <a href="{{ route('adminestrados.edit', $val->id) }}" class="btn">
                                     Editar
                                 </a>
                                 </td>
                                 <td width ="10px">
-                                    {!! Form::open(['route' => ['adminextrados.destroy', $val->id], 'method' => 'DELETE']) !!}
+                                    {!! Form::open(['route' => ['adminestrados.destroy', $val->id], 'method' => 'DELETE']) !!}
                                         <button class="btn btn-sm btn-danger">Eliminar</button>
                                     {!! Form::close() !!}
                                 </td>

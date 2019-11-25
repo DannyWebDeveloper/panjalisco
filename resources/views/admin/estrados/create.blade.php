@@ -10,9 +10,9 @@
                     </div>
 
                 <div class="card-body">
-                    {!! Form::open(['route' => 'adminextrados.store', 'files' => true]) !!}
+                    {!! Form::open(['route' => 'adminestrados.store', 'files' => true]) !!}
 
-                        @include('admin.extrados.partials.form')
+                        @include('admin.estrados.partials.form')
 
 
                     {!! Form::close() !!}

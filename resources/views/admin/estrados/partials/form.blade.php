@@ -2,7 +2,7 @@
 
 <div class="form-group">
 
-    {{ Form::label('titulo', 'Titulo del Extrado') }}
+    {{ Form::label('titulo', 'Titulo del Estrado') }}
     {{ Form::text('titulo', null, ['class' => 'form-control', 'id' => 'nombre']) }}
 </div>
 
@@ -17,7 +17,7 @@
 </div>
 
 <div class="form-group">
-        {{ Form::label('id_categoria', 'Categoria de extrado') }}
+        {{ Form::label('id_categoria', 'Categoria de estrado') }}
         {!! Form::select('id_categoria', $categorias, null,['class'=>'form-control','placeholder'=>'Seleccione una opcion']) !!}
 </div>
 
@@ -32,7 +32,7 @@
 <div class="form-group">
 
     {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
-    <a class="btn btn-warning btn-sm"  href="{{ url('adm/adminextrados') }}">Cancelar</a>
+    <a class="btn btn-warning btn-sm"  href="{{ url('adm/adminestrados') }}">Cancelar</a>
 </div>
 
 @section('scripts')

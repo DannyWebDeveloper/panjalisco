@@ -8,7 +8,7 @@
         <div class="col-md-10">
                 <div class="card card-default">
                     <div class="card-header">
-                        Categorias de extrados
+                        Categorias de estrados
                     </div>
 
                 <div class="card-body">
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
-                        <a class="btn btn-warning btn-sm"  href="{{ url('adm/adminextrados') }}">Cancelar</a>
+                        <a class="btn btn-warning btn-sm"  href="{{ url('adm/adminestrados') }}">Cancelar</a>
                     </div>
                     {!! Form::close() !!}
                     @endif

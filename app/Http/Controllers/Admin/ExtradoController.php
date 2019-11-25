@@ -33,7 +33,7 @@ class ExtradoController extends Controller
         $categorias = DB::table('categorias_extrados')->get();
 
 
-        return view('admin.extrados.index', compact(['extrados', 'categorias']));
+        return view('admin.estrados.index', compact(['extrados', 'categorias']));
     }
 
     /**
@@ -45,7 +45,7 @@ class ExtradoController extends Controller
     {
         //
         $categorias =  DB::table('categorias_extrados')->pluck('nombre', 'id');
-        return view('admin.extrados.create', compact('categorias'));
+        return view('admin.estrados.create', compact('categorias'));
     }
 
     /**
@@ -75,8 +75,8 @@ class ExtradoController extends Controller
         }
 
 
-        return redirect()->route('adminextrados.index')
-        ->with('info', 'Extrado creado con éxito');
+        return redirect()->route('adminestrados.index')
+        ->with('info', 'Estrado creado con éxito');
 
     }
 
@@ -102,7 +102,7 @@ class ExtradoController extends Controller
         $extrado = Extrado::find($id);
         $categorias =  DB::table('categorias_extrados')->pluck('nombre', 'id');
 
-        return view('admin.extrados.edit', compact(['extrado', 'categorias']));
+        return view('admin.estrados.edit', compact(['extrado', 'categorias']));
     }
 
     /**
@@ -132,8 +132,8 @@ class ExtradoController extends Controller
             $extrado->fill(['documento' => $path])->save();
         }
 
-        return redirect()->route('adminextrados.edit', $extrado->id)
-            ->with('info', 'Extraado actualizado con éxito');
+        return redirect()->route('adminestrados.edit', $extrado->id)
+            ->with('info', 'Estrado actualizado con éxito');
     }
 
     /**
@@ -147,7 +147,7 @@ class ExtradoController extends Controller
         //
         $extrado = Extrado::find($id);
         $extrado->delete();
-        return back()->with('info', 'Extrado eliminado correctamente');
+        return back()->with('info', 'Estrado eliminado correctamente');
     }
 
 
@@ -161,6 +161,6 @@ class ExtradoController extends Controller
 
         $categorias =  DB::table('categorias_extrados')->pluck('nombre', 'id');
         //return view('admin.extrados.categorias', compact('categorias'));
-        return view('admin.extrados.index', compact(['extrados', 'categorias']));
+        return view('admin.estrados.index', compact(['extrados', 'categorias']));
     }
 }

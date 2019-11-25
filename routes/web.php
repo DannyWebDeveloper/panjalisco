@@ -98,7 +98,7 @@ Route::post('adm/adminsocials/whatsupdate', 'Admin\SocialController@updateWhats'
 
 Route::resource('adm/adminusers', 'Admin\UsuarioController');
 Route::resource('adm/adminenlaces', 'Admin\EnlaceController');
-Route::resource('adm/adminextrados', 'Admin\ExtradoController');
+Route::resource('adm/adminestrados', 'Admin\ExtradoController');
 Route::resource('adm/admincategoriasextrado', 'Admin\CategoriaExtradoController');
 
 Route::resource('adm/adminhemeroteca', 'Admin\HemerotecaController');

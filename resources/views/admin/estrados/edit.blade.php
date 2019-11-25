@@ -11,9 +11,9 @@
                     </div>
 
                 <div class="card-body">
-                    {!! Form::model($extrado, ['route' => ['adminextrados.update', $extrado->id], 'method' => 'PUT', 'files' => true]) !!}
+                    {!! Form::model($extrado, ['route' => ['adminestrados.update', $extrado->id], 'method' => 'PUT', 'files' => true]) !!}
                         {{  Form::hidden('id', $extrado->id)}}
-                        @include('admin.extrados.partials.form')
+                        @include('admin.estrados.partials.form')
                     {!! Form::close() !!}
 
                 </div>

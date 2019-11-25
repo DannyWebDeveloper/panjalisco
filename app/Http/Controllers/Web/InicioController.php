@@ -35,7 +35,7 @@ class InicioController extends Controller
         join('categorias', 'noticias.id_categoria', '=', 'categorias.id')
         ->select('categorias.nombre', 'categorias.slug as slug_categoria', 'noticias.titulo', 'noticias.body', 'noticias.img', 'noticias.slug as slug_noticia', 'noticias.created_at', 'noticias.extracto' )
         ->where('noticias.estado', 'PUBLICADO')
-        ->take(4)
+        ->take(6)
         ->get();
 
 

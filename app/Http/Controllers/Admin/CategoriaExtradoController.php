@@ -25,7 +25,7 @@ class CategoriaExtradoController extends Controller
         ->groupBy('extrados.id_categoria')
         ->get();
 
-       return view('admin.extrados.categoria', compact(['extrados', 'categorias']));
+       return view('admin.estrados.categoria', compact(['extrados', 'categorias']));
     }
 
     /**

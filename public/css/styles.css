@@ -168,3 +168,102 @@ h2{
 .sidebar li{
     color:#000;
 }
+
+.enlaces .item img{
+    height: 90px;
+}
+
+.link-socials-movil{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #005DAA;
+    padding: 3px;
+}
+ .link-socials-movil .icon-what{
+     width: 25%;
+     float: left;
+ }
+ .link-socials-movil .icon-what img{
+    height: 100%;
+    width: auto;
+}
+
+ .link-socials-movil .icon-social{
+    width: 70%;
+    float: right;
+ }
+ .link-socials-movil .icon-social ul{
+    list-style: none;
+ }
+ .link-socials-movil .icon-social li{
+     float: right;
+     width: 22%;
+
+ }
+.link-socials-movil img{
+    width: 100%;
+}
+
+/*blouqqe noticias inicio*/
+.item-noticia{
+    padding: 10px;
+}
+.item-noticia .card-body{
+    padding-top: 0;
+}
+.item-noticia .resumen-nota{
+    height: 65px;
+    overflow-y: hidden;
+    font-size: .9em;
+}
+
+/*pagina incio*/
+@media only screen and (max-width: 600px) {
+
+#myCarousel{
+    height: 40vh;
+}
+.carousel-item{
+    height: 100% !important;
+}
+.carousel-item img{
+    height: 100%;
+    width: auto;
+    transform: translatex(-30%)
+}
+.carousel-caption{
+    height: 110px;
+    font-size: .8em;
+    bottom: 10px !important;
+}
+.carousel-caption p {
+    height: 20px;
+    overflow: hidden;
+}
+.map-links img{
+    width:100%;
+    height: auto;
+}
+.enlaces .item img{
+    height: 175px;
+    width:100%;
+}
+.icon-whats{
+    display: none;
+}
+#social{
+    display: none;
+}
+.link-socials-movil{
+    display: block;
+    z-index: 1;
+}
+.link-socials-movil img{
+    height: 45px !important;
+    width: 45px !important;
+}
+
+}

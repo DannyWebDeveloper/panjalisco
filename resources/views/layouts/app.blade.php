@@ -69,7 +69,7 @@
                                 </div>
                             </li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('adminboletines.index') }}">Boletines</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminextrados.index') }}">Extrados</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminestrados.index') }}">Extrados</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('adminhemeroteca.index') }}">Hemeroteca</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admindirectorio.index') }}">Directorio</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admincomite.index') }}">Comité</a></li>
@@ -123,7 +123,7 @@
                                 </div>
                             </li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('adminboletines.index') }}">Boletines</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminextrados.index') }}">Extrados</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminestrados.index') }}">Estrados</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('adminhemeroteca.index') }}">Hemeroteca</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admindirectorio.index') }}">Directorio</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admincomite.index') }}">Comité</a></li>
