@@ -26,7 +26,9 @@ class MenuController extends Controller
     public function index()
     {
         //
-        $menus = Menu::orderBy('id', 'DESC')->paginate();
+        $menus = Menu::where('nivel', 'Padre')->orderBy('orden', 'ASC')->paginate(10);
+
+        $submenus = Menu::where('nivel', 'Hijo')->orderBy('orden', 'ASC')->get();
 
         $slugs = Menu::
         join('paginas', 'paginas.id', '=', 'menus.id_pagina')
@@ -34,7 +36,7 @@ class MenuController extends Controller
         ->get();
 
 
-        return view('admin.menus.index', compact(['menus', 'slugs']));
+        return view('admin.menus.index', compact(['menus','submenus',  'slugs']));
 
     }
 
@@ -66,9 +68,18 @@ class MenuController extends Controller
     {
         //
         $menu = Menu::create($request->all());
+
         if($request->get('nivel') == 'Hijo'){
+
+            //agregar sub a padre
             $cat = Menu::where('id', $request->get('id_padre'))
             ->update(['cantidad_subs'=> DB::raw('cantidad_subs+1')]);
+
+            //
+            $hijo = DB::table('menus_subs')->insert([
+                'id_padre'=>$request->get('id_padre'),
+                'id_hijo'=> $menu->id
+            ]);
         }
 
 
@@ -142,24 +153,59 @@ class MenuController extends Controller
         $menu = Menu::find($id);
         //$this->authorize('pass', $pagina);
 
-
-        //si es menu hijo, suma la cantidad de subs al padres
+        //si es menu hijo
         if($request->get('nivel') == 'Hijo'){
-            //consultar si ya era hijo del padre seleccionado
-            $isHijoExistente = Menu::where('id', $id)->where('id_padre', $request->get('id_padre'))->get();
-            if(count($isHijoExistente) != 1){
-                //si no existia como sub del padre seleccionado, le suma subs al padre
-                $cat = Menu::where('id', $request->get('id_padre'))
-                ->update(['cantidad_subs'=> DB::raw('cantidad_subs+1')]);
-            }
 
-            //es hijo y el padre es otro, verificar si ya tenia padre y desconotarle
-            if($menu->id_padre > 0){
+            $exist = DB::table('menus_subs')->where('id_padre', $request->get('id_padre'))->where('id_hijo', $id)->get();
 
+            if(count($exist) == 0){
+                //
+                $hijo_delete = DB::table('menus_subs')->where('id_hijo', $id)->delete();
+                $hijo = DB::table('menus_subs')->insert([
+                    'id_padre'=>$request->get('id_padre'),
+                    'id_hijo'=> $id
+                ]);
+
+                //descontar cant subs, anterior
                 $desc = Menu::where('id', $menu->id_padre)
                 ->update(['cantidad_subs'=> DB::raw('cantidad_subs-1')]);
 
+                //add news cant subs
+                $cat = Menu::where('id', $request->get('id_padre'))
+                ->update(['cantidad_subs'=> DB::raw('cantidad_subs+1')]);
+
+            }else{
+                //mismo padre, no pasa nada
+
             }
+
+
+            /*
+            //consultar si ya era hijo del padre seleccionado
+            $isHijoExistente = Menu::where('id', $id)->where('id_padre', $request->get('id_padre'))->get();
+
+            if(count($isHijoExistente) != 1){
+                //si no existia como sub del padre seleccionado, le suma subs al padre
+                //$cat = Menu::where('id', $request->get('id_padre'))
+                //->update(['cantidad_subs'=> DB::raw('cantidad_subs+1')]);
+
+                //si ya era hijo del padre seleccionado, y es ahora es otro desconotarle al actual y sumarle al nuevo padre
+                if($menu->id_padre > 0){
+                    foreach($isHijoExistente as $item){
+                        if($item->id_padre == $request->get('id_padre')){
+
+                        }else{
+                            $desc = Menu::where('id', $menu->id_padre)
+                            ->update(['cantidad_subs'=> DB::raw('cantidad_subs-1')]);
+
+                            $cat = Menu::where('id', $request->get('id_padre'))
+                            ->update(['cantidad_subs'=> DB::raw('cantidad_subs+1')]);
+                        }
+                    }
+
+
+                }
+            }*/
         }
 
         $menu->fill($request->all())->save();
@@ -177,12 +223,17 @@ class MenuController extends Controller
     public function destroy($id)
     {
         //
-        $menu = Menu::find($id);;
-        //$this->authorize('pass', $pagina);
-        //es hijo y el padre es otro, verificar si ya tenia padre y desconotarle
-        if($menu->id_padre > 0){
+        $menu = Menu::find($id);
+
+        if($menu->nivel == 'Hijo'){
+            $padre = DB::table('menus_subs')->where('id_hijo', $id)->get();
+
+            $padre_del = DB::table('menus_subs')->where('id_hijo', $id)->delete();
+
             $desc = Menu::where('id', $menu->id_padre)
             ->update(['cantidad_subs'=> DB::raw('cantidad_subs-1')]);
+        }else{
+            $padre_del = DB::table('menus_subs')->where('id_padre', $id)->delete();
         }
 
         $menu->delete();

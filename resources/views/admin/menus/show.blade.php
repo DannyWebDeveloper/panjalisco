@@ -21,14 +21,13 @@
 
                     @if(count($submenus) > 0)
                     <h3>Submenus derivados</h3>
-                    @endif
+
                     {!! Form::open(['route' => 'reorder-menu']) !!}
                     <table class="table">
                         <thead>
                             <tr><th>Nombre</th><th>URL</th><th style="width:50px;">Orden</th> </tr>
                         </thead>
                         <tbody>
-
                     @foreach($submenus as $sub)
                         <tr>
                             <td>
@@ -36,7 +35,6 @@
                             </td>
                             <td>
                         @if($sub->id_pagina > 0)
-
                             @foreach($slug_submenu as $slu_sub  )
                                     {{ $slu_sub->slug }}
                             @endforeach
@@ -47,6 +45,8 @@
                             <td>
                                 {{ Form::text($sub->id, $sub->orden, ['class' => 'form-control input-sm', 'id' => 'orden' ]) }}
                             </td>
+
+
                         </tr>
                     @endforeach
                             <tr>
@@ -61,6 +61,8 @@
                     </table>
 
                     {!! Form::close() !!}
+
+                    @endif
                     <br>
 
                  </div>

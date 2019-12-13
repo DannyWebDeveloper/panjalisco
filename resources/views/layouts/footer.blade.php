@@ -1,5 +1,5 @@
 @if(isset($whats))
-<a href="whatsapp://send?phone=+52{{$whats->numero}}&text={{$whats->msg}}" class="icon-whats"><img src="{{  asset('img/whats.png') }}" class="icon-whats"/></a>
+<a href="https://api.whatsapp.com/send?phone=+52{{$whats->numero}}&text={{$whats->msg}}" target="_blank" class="icon-whats"><img src="{{  asset('img/whats.png') }}" class="icon-whats"/></a>
 @endif
 <div id="social">
     <ul class="sc_menu">

@@ -1,29 +1,47 @@
 {{  Form::hidden('id_user', auth()->user()->id)}}
 
-<div class="form-group">
+<div class="form-group row">
+  <div class="col-sm-4">
     {{ Form::label('nombre', 'Nombre del integrante') }}
     {{ Form::text('nombre', null, ['class' => 'form-control']) }}
+  </div>
+  <div class="col-sm-4">
+    {{ Form::label('p_apellido', 'Primer apellido') }}
+    {{ Form::text('p_apellido', null, ['class' => 'form-control']) }}
+  </div>
+  <div class="col-sm-4">
+    {{ Form::label('s_apellido', 'Segundo apellido') }}
+    {{ Form::text('s_apellido', null, ['class' => 'form-control']) }}
+  </div>
 </div>
-<div class="form-group">
+<div class="form-group row">
+    <div class="col-sm-4">
     {{ Form::label('telefono', 'Telefono') }}
     {{ Form::text('telefono', null, ['class' => 'form-control', 'maxlength' => 10 ]) }}
-</div>
-<div class="form-group">
+    </div>
+    <div class="col-sm-4">
     {{ Form::label('ext', 'Extensión') }}
     {{ Form::text('ext', null, ['class' => 'form-control', 'maxlength' => 10 ]) }}
-</div>
-
-<div class="form-group">
+    </div>
+    <div class="col-sm-4">
     {{ Form::label('email', 'Email') }}
     {{ Form::text('email', null, ['class' => 'form-control', ]) }}
+    </div>
 </div>
-<div class="form-group">
+
+<div class="form-group row">
+<div class="col-sm-6">
     {{ Form::label('area', 'Área') }}
     {{ Form::text('area', null, ['class' => 'form-control']) }}
 </div>
-<div class="form-group">
+<div class="col-sm-6">
         {{ Form::label('titular', 'Titular del área') }}
         {!! Form::select('titular',['NO' => 'No','SI'=>'Si, es titular'],null,['class'=>'form-control','placeholder'=>'Seleccione una opcion']) !!}
+</div>
+</div>
+<div class="form-group">
+    {{ Form::label('cargo', 'Cargo') }}
+    {{ Form::text('cargo', null, ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
         {{ Form::label('visible', 'Visibilidad') }}

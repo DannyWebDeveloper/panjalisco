@@ -14,9 +14,6 @@
                     {!! Form::model($documento, ['route' => ['documentoUpdate', $documento->id], 'method' => 'PUT', 'files' => true]) !!}
                         @include('admin.transparencia.documentos.partials.form')
                     {!! Form::close() !!}
-
-
-
                 </div>
             </div>
             </div>

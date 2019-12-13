@@ -25,7 +25,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($incisos->sortBy(['Numero_Parrafo']) as $inc)
+                            @foreach($incisos as $inc)
                             <tr>
 
                                 <td>{{ $inc->Numero }} </td>

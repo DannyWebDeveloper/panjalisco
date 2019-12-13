@@ -22,6 +22,7 @@
                         <th>Ext.</th>
                         <th>Correo</th>
                         <th>Área</th>
+                        <th>Cargo</th>
                         <th>Titular</th>
                         <th>Visible</th>
                         <th colspan="2">&nbsp;</th>
@@ -30,11 +31,12 @@
                         <tbody>
                             @foreach($dirs as $val)
                             <tr>
-                               <td> {{ $val->nombre }}</td>
+                               <td> {{ $val->nombre }} {{ $val->p_apellido }} {{ $val->s_apellido }} </td>
                                <td> {{ $val->telefono }}</td>
                                <td> {{ $val->ext }}</td>
                                <td> {{ $val->email }}</td>
                                <td> {{ $val->area }}</td>
+                               <td> {{ $val->cargo}} </td>
                                <td>{{ $val->titular }}</td>
                                <td>
                                @if($val->visible == 1)

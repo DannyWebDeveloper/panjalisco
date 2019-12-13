@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Articulos;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 //modelo
 use App\Articulo;
@@ -40,9 +41,36 @@ class ArticuloController extends Controller
         ->groupBy('articulo_parrafos.id')
         ->get();
 
+        $documentos_parrafo =  ArticuloParrafo::
+        select('articulo_parrafos.id', 'articulo_documentos.NombreDocumento', 'articulo_documentos.id_parrafo', 'articulo_documentos.Archivo',  'articulo_documentos.Link',  'articulo_documentos.FechaDocumento', 'articulo_documentos.FechaCorresponde', 'articulo_documentos.FechaAutoDoc'   )
+        ->join('articulo_documentos', 'articulo_documentos.id_parrafo', '=', 'articulo_parrafos.id')
+        ->where('articulo_documentos.Visible', 1)
+        ->get();
+
+        //fecha en caso que sea auto
+        $day = Carbon::now()->format('d');
+        $mes = Carbon::now()->format('m');
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+        if($day < 5)
+        {
+            $mes = $mes - 1;
+            $mes2 = $mes - 1;
+            $fecha_act = Carbon::now()->month($mes)->day(5)->format('Y-m-d');
+
+            $fecha_corresponde = Carbon::now()->month($mes2)->day(5);
+            $mes = $meses[($fecha_corresponde->format('n')) - 1];
+            $fecha_corresponde =  $mes . ' de ' . $fecha_corresponde->format('Y');
+
+        }else{
+            $mes2 = $mes - 1;
+            $fecha_act = Carbon::now()->day(5)->format('Y-m-d');
+            $fecha_corresponde = Carbon::now()->month($mes2)->day(5)->format('Y-m-d');
+        }
+
+
         $incisos = ArticuloInciso::where('Visible', 1)->orderby('Id_Parrafo')->orderBy('Orden')->get();
 
-        return view('web.transparencia', compact(['articulos', 'parrafos', 'documentos_parrafos', 'incisos']));
+        return view('web.transparencia', compact(['articulos', 'parrafos', 'documentos_parrafos', 'documentos_parrafo', 'incisos', 'fecha_act', 'fecha_corresponde']));
     }
 
     public function getDocumentosInciso(Request $request, $id){
@@ -58,8 +86,25 @@ class ArticuloController extends Controller
             //return Carbon::parse($item->FechaDocumento)->format('Y');
         }
         );
+
+        //fecha en caso que sea auto
+        $day = Carbon::now()->format('d');
+        $mes = Carbon::now()->format('m');
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+        if($day < 5)
+        {
+            $mes = $mes - 1;
+            $mes2 = $mes - 1;
+            $fecha_act = Carbon::now()->month($mes)->day(5)->format('Y-m-d');
+            $fecha_corresponde = Carbon::now()->month($mes2)->day(5)->format('Y-m-d');
+        }else{
+            $mes2 = $mes - 1;
+            $fecha_act = Carbon::now()->day(5)->format('Y-m-d');
+            $fecha_corresponde = Carbon::now()->month($mes2)->day(5)->format('Y-m-d');
+        }
+
         //$incisos = ArticuloInciso::all();
-        return view('web.transparencia.documentos', compact(['documentos_inciso', 'Meses', 'inciso', 'whois']));
+        return view('web.transparencia.documentos', compact(['documentos_inciso', 'Meses', 'inciso', 'whois', 'fecha_act', 'fecha_corresponde']));
     }
 
     public function getDocumentosParrafo(Request $request, $id){

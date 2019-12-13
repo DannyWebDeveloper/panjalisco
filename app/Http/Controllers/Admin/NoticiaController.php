@@ -7,6 +7,7 @@ use App\Http\Requests\NoticiaStoreRequest;
 use App\Http\Requests\NoticiaUpdateRequest;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 use App\Http\Controllers\Controller;
 
@@ -55,8 +56,18 @@ class NoticiaController extends Controller
      */
     public function store(NoticiaStoreRequest $request)
     {
-        $noticia = Noticia::create($request->all());
 
+        $validator =  Validator::make($request->all(), [
+            'titulo' => ['required', 'string', 'max:255'],
+            'slug' => ['required', 'string', 'max:255'],
+            'id_categoria' => ['required'],
+            'img' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
+            'estado' => ['required'],
+            'extracto' => ['required'],
+            'body' => ['required'],
+        ]);
+
+        $noticia = Noticia::create($request->all());
         //archivo imagen
         if($request->file('img')){
             $path = Storage::disk('public')->put('img-noticias', $request->file('img'));
@@ -79,7 +90,7 @@ class NoticiaController extends Controller
     {
         //noticia
         $noticia = Noticia::find($id);
-        $this->authorize('pass', $noticia);
+        //$this->authorize('pass', $noticia);
 
 
         $categoria = Categoria::
@@ -100,7 +111,7 @@ class NoticiaController extends Controller
     public function edit($id)
     {
         $noticia = Noticia::find($id);
-        $this->authorize('pass', $noticia);
+        //$this->authorize('pass', $noticia);
 
         $categorias = Categoria::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
 
@@ -119,7 +130,7 @@ class NoticiaController extends Controller
     public function update(NoticiaUpdateRequest $request, $id)
     {
         $noticia = Noticia::find($id);
-        $this->authorize('pass', $noticia);
+        //$this->authorize('pass', $noticia);
 
         $noticia->fill($request->all())->save();
 

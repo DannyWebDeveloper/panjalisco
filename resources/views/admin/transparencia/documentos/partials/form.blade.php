@@ -25,10 +25,24 @@
        {!! Form::select('visible',['1' => 'Visible','0'=>'No visible'],$documento->visible,['class'=>'form-control','placeholder'=>'Seleccione una opcion']) !!}
 </div>
 
-<div class="form-group">
-
+<div class="form-group row">
+  <div class="col-md-6">
     {{ Form::label('FechaDocumento', 'Fecha de documento') }}
-    {{ Form::text('FechaDocumento', $documento->FechaDocumento,  ['class' => 'form-control datepicker' ]) }}
+    {{ Form::text('FechaDocumento', $documento->FechaDocumento,  ['class' => 'form-control datepicker', 'id' => 'FechaDocumento' ]) }}
+   </div>
+   <div class="col-md-6">
+   {{ Form::label('FechaCorresponde', 'Fecha correspondiente') }}
+    {{ Form::text('FechaCorresponde', $documento->FechaCorresponde,  ['class' => 'form-control datepicker', 'id' => 'FechaCorresponde' ]) }}
+   </div>
+</div>
+<div class="form-group">
+    @if($documento->FechaAutoDoc == 1)
+                    {!! Form::label('FechaAutoDoc', 'Fecha automatica', []) !!}
+                    {!! Form::checkbox('FechaAutoDoc', $documento->FechaAutoDoc, null, [] ) !!}
+    @else
+                    {!! Form::label('FechaAutoDoc', 'Fecha automatica', []) !!}
+                    {!! Form::checkbox('FechaAutoDoc', null, false, [] ) !!}
+    @endif
 </div>
 <div class="form-group">
 
@@ -51,18 +65,35 @@
     <script>
 
 
-        jQuery(function($){
-
-
+          jQuery(function($){
            // $( ".datepicker" ).focus(function(){
-                $( ".datepicker" ).datepicker({
+
+            //});
+            $('input').attr('autocomplete','off');
+
+            $("#FechaCorresponde").datepicker({
                 changeMonth: true,
                 changeYear: true,
                 dateFormat: 'yy-mm-dd'
-                });
-            //});
-            $('input').attr('autocomplete','off');
+            });
+
+
+    $("#FechaDocumento").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'yy-mm-dd',
+        onSelect: function(dateText) {
+            var date = $(this).datepicker('getDate'),
+            day  = date.getDate(),
+            month = date.getMonth() + 1,
+            year =  date.getFullYear();
+            newdate = new Date(date.setMonth(date.getMonth()-1));
+            //$datepicker.datepicker('setDate', new Date());
+            //var newdate = (month-1)+'/'+day+'/'+year;
+             $('#FechaCorresponde').datepicker('setDate', newdate);
+        }
     });
+});
 
 
 

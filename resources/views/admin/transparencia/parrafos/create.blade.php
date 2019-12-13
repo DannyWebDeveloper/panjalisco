@@ -57,6 +57,11 @@
                     {{ Form::text('Fecha', '',  ['class' => 'form-control datepicker' ]) }}
                 </div>
                 <div class="form-group">
+                    {!! Form::label('FechaAuto', 'Fecha automatica', []) !!}
+                    {!! Form::checkbox('FechaAuto', null, false, [] ) !!}
+                </div>
+
+                <div class="form-group">
 
                     {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
                     <a class="btn btn-warning btn-sm"  href="{{ url('adm/admintransparencia/parrafos') }}">Cancelar</a>

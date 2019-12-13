@@ -53,32 +53,7 @@
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
                             </li>
                         @else
-                        <!--
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('admincategorias.index') }}">Categorias</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminnoticias.index') }}">Noticias</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminpaginas.index') }}">Páginas</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminmenus.index') }}">Menús</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminsliders.index') }}">Sliders</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="{{ route('admintransparencia') }}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Transparencia</a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="{{ route('articulos') }}">Articulos</a>
-                                <a class="dropdown-item" href="{{ route('parrafos')  }}">Parrafos</a>
-                                <a class="dropdown-item" href="{{ route('incisos')}}">Incisos</a>
-                                <a class="dropdown-item" href="{{ route('documentos') }}">Documentos</a>
-                                </div>
-                            </li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminboletines.index') }}">Boletines</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminestrados.index') }}">Extrados</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminhemeroteca.index') }}">Hemeroteca</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('admindirectorio.index') }}">Directorio</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('admincomite.index') }}">Comité</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('admincomision.index') }}">Comisión</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminsocials.index') }}">Redes sociales</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminenlaces.index') }}">Enlaces</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminmapas.index') }}">Mapas</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminusers.index') }}">Usuarios</a></li>
-                            -->
+
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -119,11 +94,18 @@
                                 <a class="dropdown-item" href="{{ route('articulos') }}">Articulos</a>
                                 <a class="dropdown-item" href="{{ route('parrafos')  }}">Parrafos</a>
                                 <a class="dropdown-item" href="{{ route('incisos')}}">Incisos</a>
-
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="itemEstrado" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Estrados</a>
+                                <div class="dropdown-menu" aria-labelledby="itemEstrado">
+                                <a class="dropdown-item" href="{{ route('categoriaEstrado') }}">Categoria padre</a>
+                                <a class="dropdown-item" href="{{ route('subcategoriaEstrado')  }}">Categoria Hijo</a>
+                                <a class="dropdown-item" href="{{ route('grupoEstrado')}}">Grupo extrado</a>
                                 </div>
                             </li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('adminboletines.index') }}">Boletines</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('adminestrados.index') }}">Estrados</a></li>
+
                             <li class="nav-item"> <a class="nav-link" href="{{ route('adminhemeroteca.index') }}">Hemeroteca</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admindirectorio.index') }}">Directorio</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admincomite.index') }}">Comité</a></li>

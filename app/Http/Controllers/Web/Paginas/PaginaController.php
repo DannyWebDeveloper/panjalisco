@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Pagina;
+use App\ArchivoPagina;
 
 class PaginaController extends Controller
 {
@@ -22,7 +23,14 @@ class PaginaController extends Controller
         ->get();
         */
 
-        return view('web.pages.page', compact(['pagina' ]));
+             //get documentos
+             $archivos = ArchivoPagina::
+             join('paginas', 'paginas.id', '=', 'archivo_paginas.id_pagina')
+             ->select('archivo_paginas.id', 'archivo_paginas.file', 'archivo_paginas.nombre', 'archivo_paginas.fecha' )
+             ->where('paginas.id', $pagina->id)
+             ->get();
+
+        return view('web.pages.page', compact(['pagina', 'archivos' ]));
 
     }
 }

@@ -13,13 +13,9 @@
 
 Route::get('/', 'Web\InicioController@index')->name('inicio');
 
-/*
-Route::get('/transparencia', function () {
-    return view('transparencia');
-});
-*/
 /** pagina transparencia */
 Route::resource('transparencia', 'Articulos\ArticuloController');
+
 //Route::post('transparencia/docs', 'Articulos\ArticuloController@getDocumentos')->name('get-documentos-transparencia');
 Route::get('transparencia/documento/inciso/{id_inciso}', [
     'as' => 'transparencia.documento.inciso', 'uses' => 'Articulos\ArticuloController@getDocumentosInciso'
@@ -27,7 +23,6 @@ Route::get('transparencia/documento/inciso/{id_inciso}', [
 Route::get('transparencia/documento/parrafo/{id_parrafo}', [
     'as' => 'transparencia.documento.parrafo', 'uses' => 'Articulos\ArticuloController@getDocumentosParrafo'
 ]);
-
 
 Route::post('/transparencia','Articulos\ArticuloController@showUploadFile');
 
@@ -55,6 +50,16 @@ Route::resource('transparencia/documento', 'Articulos\ArticuloDocumentoControlle
 //////web
 //aviso de privacidad
 Route::get('/aviso-de-privacidad', 'Web\WebsController@aviso')->name('aviso-de-privacidad');
+
+//directorio
+Route::get('/directorio', 'Web\WebsController@directorio')->name('directorio');
+
+//estrados
+Route::get('/estrados', 'Estrados\EstradosController@index')->name('estrados');
+Route::get('estrados/documento/{nivel}/{id}', [
+    'as' => 'estrados.documento', 'uses' => 'Estrados\EstradosController@getDocumentosByNivel'
+]);
+
 
 //contacto
 Route::get('/contacto', 'Web\WebsController@contacto')->name('contacto');
@@ -98,8 +103,40 @@ Route::post('adm/adminsocials/whatsupdate', 'Admin\SocialController@updateWhats'
 
 Route::resource('adm/adminusers', 'Admin\UsuarioController');
 Route::resource('adm/adminenlaces', 'Admin\EnlaceController');
-Route::resource('adm/adminestrados', 'Admin\ExtradoController');
-Route::resource('adm/admincategoriasextrado', 'Admin\CategoriaExtradoController');
+//Route::resource('adm/adminestrados', 'Admin\ExtradoController');
+//Route::resource('adm/admincategoriasextrado', 'Admin\CategoriaExtradoController');
+
+Route::get('adm/adminestrados', 'Admin\EstradoController@index')->name('adminestrados');
+
+Route::get('adm/adminestrados/categorias', 'Admin\EstradoController@indexCategorias')->name('categoriaEstrado');
+Route::get('adm/adminestrados/categorias/create', 'Admin\EstradoController@createCategoria')->name('categoriaEstradoCreate');
+Route::post('adm/adminestrados/categorias/post', 'Admin\EstradoController@storeCategoria')->name('categoriaEstradoPost');
+Route::get('adm/adminestrados/categorias/edit/{id}', 'Admin\EstradoController@editCategoria')->name('categoriaEstradoEdit');
+Route::put('adm/adminestrados/categorias/update', 'Admin\EstradoController@updateCategoria')->name('categoriaEstradoUpdate');
+Route::delete('adm/adminestrados/categorias/delete/{id}', 'Admin\EstradoController@deleteCategoria')->name('categoriaEstradoDelete');
+
+Route::get('adm/adminestrados/subcategorias', 'Admin\EstradoController@indexSubCategorias')->name('subcategoriaEstrado');
+Route::get('adm/adminestrados/subcategorias/create', 'Admin\EstradoController@createSubCategoria')->name('subcategoriaEstradoCreate');
+Route::post('adm/adminestrados/subcategorias/post', 'Admin\EstradoController@storeSubCategoria')->name('subcategoriaEstradoPost');
+Route::get('adm/adminestrados/subcategorias/edit/{id}', 'Admin\EstradoController@editSubCategoria')->name('subcategoriaEstradoEdit');
+Route::put('adm/adminestrados/subcategorias/update', 'Admin\EstradoController@updateSubCategoria')->name('subcategoriaEstradoUpdate');
+Route::delete('adm/adminestrados/subcategorias/delete/{id}', 'Admin\EstradoController@deleteSubCategoria')->name('subcategoriaEstradoDelete');
+
+Route::get('adm/adminestrados/grupos', 'Admin\EstradoController@indexGrupos')->name('grupoEstrado');
+Route::get('adm/adminestrados/grupos/create', 'Admin\EstradoController@createGrupo')->name('grupoEstradoCreate');
+Route::post('adm/adminestrados/grupos/post', 'Admin\EstradoController@storeGrupo')->name('grupoEstradoPost');
+Route::get('adm/adminestrados/grupos/edit/{id}', 'Admin\EstradoController@editGrupo')->name('grupoEstradoEdit');
+Route::put('adm/adminestrados/grupos/update', 'Admin\EstradoController@updateGrupo')->name('grupoEstradoUpdate');
+Route::delete('adm/adminestrados/grupos/delete/{id}', 'Admin\EstradoController@deleteGrupo')->name('grupoEstradoDelete');
+
+Route::get('adm/adminestrados/documentos', 'Admin\EstradoController@indexDocs')->name('docEstrado');
+Route::get('adm/adminestrados/documentos/create/{nivel}/{id}', 'Admin\EstradoController@createDoc')->name('docEstradoCreate');
+Route::post('adm/adminestrados/documentos/post', 'Admin\EstradoController@storeDoc')->name('docEstradoPost');
+Route::get('adm/adminestrados/documentos/edit/{id}', 'Admin\EstradoController@editDoc')->name('docEstradoEdit');
+Route::put('adm/adminestrados/documentos/update', 'Admin\EstradoController@updateDoc')->name('docEstradoUpdate');
+Route::delete('adm/adminestrados/documentos/delete/{id}', 'Admin\EstradoController@deleteDoc')->name('docEstradoDelete');
+
+
 
 Route::resource('adm/adminhemeroteca', 'Admin\HemerotecaController');
 Route::resource('adm/admindirectorio', 'Admin\DirectorioController');

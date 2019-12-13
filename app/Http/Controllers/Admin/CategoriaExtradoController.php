@@ -17,11 +17,11 @@ class CategoriaExtradoController extends Controller
     public function index()
     {
         //
-       $categorias = DB::table('categorias_extrados')->get();
+       $categorias = DB::table('extrados_categorias')->get();
 
        $extrados = DB::table('extrados')
         ->selectRaw('extrados.id_categoria, count(*) as cantidad')
-        ->join('categorias_extrados', 'extrados.id_categoria', '=', 'categorias_extrados.id')
+        ->join('extrados_categorias', 'extrados.id_categoria', '=', 'extrados_categorias.id')
         ->groupBy('extrados.id_categoria')
         ->get();
 
@@ -47,7 +47,7 @@ class CategoriaExtradoController extends Controller
     public function store(Request $request)
     {
         //
-        $categoria = DB::table('categorias_extrados')->insert(['nombre' => $request->get('nombre')]);
+        $categoria = DB::table('extrados_categorias')->insert(['nombre' => $request->get('nombre')]);
         return back()->with('info', 'Categoria creada correctamente');
 
     }
@@ -72,7 +72,7 @@ class CategoriaExtradoController extends Controller
     public function edit($id)
     {
         //
-        $categoria = DB::table('categorias_extrados')->where('id', $id)->get();
+        $categoria = DB::table('extrados_categorias')->where('id', $id)->get();
         return back()->with('edit', $categoria);
     }
 
@@ -87,7 +87,7 @@ class CategoriaExtradoController extends Controller
     {
         //
 
-        $cat = DB::table('categorias_extrados')->where('id', $id)->update(['nombre' => $request->get('nombre')]);
+        $cat = DB::table('extrados_categorias')->where('id', $id)->update(['nombre' => $request->get('nombre')]);
         //$this->authorize('pass', $pagina);
 
         return back()->with('info', 'Categoria actualizada correctamente');
@@ -102,7 +102,7 @@ class CategoriaExtradoController extends Controller
     public function destroy($id)
     {
         //
-        $categoria = DB::table('categorias_extrados')->where('id', $id)->delete();
+        $categoria = DB::table('extrados_categorias')->where('id', $id)->delete();
         //$categoria->delete();
         return back()->with('info', 'Categoria eliminada correctamente');
     }

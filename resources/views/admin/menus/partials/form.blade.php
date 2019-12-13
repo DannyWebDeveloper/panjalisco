@@ -71,21 +71,11 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <script  src="{{ asset('vendor/stringToSlug/src/jquery.stringtoslug.js') }}"></script>
-    <script  src="{{ asset('vendor/stringToSlug/src/speakingurl.min.js') }}"></script>
-
-    <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}" defer></script>
-
-
     <script>
 
 
         jQuery(function($){
 
-            //click, para ver opciones de un archivo, en editar pagina
-            $(".ver").click(function () {
-                $( this ).next( ".filei" ).css( "display", "block" );
-            });
 
             $('input').attr('autocomplete','off');
 

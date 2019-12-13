@@ -32,7 +32,17 @@
 <div class="form-group">
 
     {{ Form::label('Fecha', 'Fecha de actualización') }}
-    {{ Form::text('Fecha', $parrafo->Fecha,  ['class' => 'form-control datepicker' ]) }}
+    {{ Form::text('Fecha', $parrafo->Fecha,  ['class' => 'form-control datepicker', 'id' => 'FechaActualizacion' ]) }}
+</div>
+
+<div class="form-group">
+    @if($parrafo->FechaAuto == 1)
+                    {!! Form::label('FechaAuto', 'Fecha automatica', []) !!}
+                    {!! Form::checkbox('FechaAuto', $parrafo->FechaAuto, null, [] ) !!}
+    @else
+                    {!! Form::label('FechaAuto', 'Fecha automatica', []) !!}
+                    {!! Form::checkbox('FechaAuto', null, false, [] ) !!}
+    @endif
 </div>
 <div class="form-group">
 
@@ -46,24 +56,13 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <script  src="{{ asset('vendor/stringToSlug/src/jquery.stringtoslug.js') }}"></script>
-    <script  src="{{ asset('vendor/stringToSlug/src/speakingurl.min.js') }}"></script>
-
-    <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}" defer></script>
-
 
     <script>
 
 
         jQuery(function($){
-
-
            // $( ".datepicker" ).focus(function(){
-                $( ".datepicker" ).datepicker({
-                changeMonth: true,
-                changeYear: true,
-                dateFormat: 'yy-mm-dd'
-                });
+
             //});
             $('input').attr('autocomplete','off');
     });

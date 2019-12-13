@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-offset-2">
+            <div class="col-md-12">
                 <div class="card card-default">
                     <div class="card-header">
                             Nuevo integrante al directorio

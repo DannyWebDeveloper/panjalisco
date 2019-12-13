@@ -31,7 +31,13 @@
                             <a href="{{ $doc->Link }}">{{ $doc->NombreDocumento }}</a>
                             @endif
                         </td>
-                        <td>{{ $doc->FechaDocumento }}</td>
+                        <td>
+                            @if($doc->FechaAutoDoc == 1)
+                            <b>Automática</b>
+                            @else
+                            {{ $doc->FechaDocumento }}
+                            @endif
+                        </td>
                         <td>@if($doc->visible == 1)
                                 SI
                                 @else
@@ -70,15 +76,26 @@
                         {{ Form::label('Archivo', 'Archivo') }}
                         {{ Form::file('Archivo', ['class' => 'form-control' ]) }}
                     </div>
-                    <div class="form-group">
-                        {{ Form::label('FechaDocumento', 'Fecha') }}
-                        {{ Form::text('FechaDocumento', null,  ['class' => 'form-control datepicker' ]) }}
-                    </div>
-                    <div class="form-group">
-                        {{ Form::label('visible', 'Visibilidad') }}
-                        {!! Form::select('visible',['1' => 'Visible','0'=>'No visible'], 0 ,['class'=>'form-control','placeholder'=>'Seleccione una opcion']) !!}
-                    </div>
-
+                    <div class="form-group row">
+                            <div class="col-md-6">
+                                {{ Form::label('FechaDocumento', 'Fecha') }}
+                                {{ Form::text('FechaDocumento', $FechaDocumento,  ['class' => 'form-control datepicker', 'id' => 'FechaDocumento' ]) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ Form::label('FechaCorresponde', 'Fecha correspondiente') }}
+                                {{ Form::text('FechaCorresponde', $FechaCorresponde,  ['class' => 'form-control datepicker', 'id' => 'FechaCorresponde' ]) }}
+                            </div>
+                            </div>
+                            <div class="form-group">
+                                                {!! Form::label('FechaAutoDoc', 'Fecha automatica', []) !!}
+                                                {!! Form::checkbox('FechaAutoDoc', null, false, [] ) !!}
+                            </div>
+                            <div class="form-group row">
+                            <div class="col-md-6">
+                                {{ Form::label('visible', 'Visibilidad') }}
+                                {!! Form::select('visible',['1' => 'Visible','0'=>'No visible'], 1 ,['class'=>'form-control','placeholder'=>'Seleccione una opcion']) !!}
+                            </div>
+                            </div>
                     <div class="form-group">
 
                     {{ Form::submit('Agregar', ['class' => 'btn btn-sm btn-primary']) }}
@@ -90,6 +107,46 @@
             </div>
         </div>
     </div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+jQuery(function($){
+    $( ".edit-doc" ).click(function(){
+
+    });
+    $('input').attr('autocomplete','off');
+    $("#FechaActualizacion").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'yy-mm-dd',
+    });
+
+    $("#FechaCorresponde").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'yy-mm-dd',
+    });
+
+
+    $("#FechaDocumento").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'yy-mm-dd',
+        onSelect: function(dateText) {
+            var date = $(this).datepicker('getDate'),
+            day  = date.getDate(),
+            month = date.getMonth() + 1,
+            year =  date.getFullYear();
+            newdate = new Date(date.setMonth(date.getMonth()-1));
+            //$datepicker.datepicker('setDate', new Date());
+            //var newdate = (month-1)+'/'+day+'/'+year;
+             $('#FechaCorresponde').datepicker('setDate', newdate);
+        }
+    });
+
+});
+</script>
 @endsection;
 
 

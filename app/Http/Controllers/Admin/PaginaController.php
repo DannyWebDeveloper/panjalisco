@@ -61,20 +61,42 @@ class PaginaController extends Controller
         $pagina = Pagina::create($request->all());
 
         //archivo imagen portada
-        if($request->file('img')){
-            $path = Storage::disk('public')->put('img-paginas', $request->file('img'));
-            $pagina->fill(['img' => asset($path)])->save();
+         if($request->file('img')){
+            $archivo = $request->file('img');
 
+            $nombre = $archivo->getClientOriginalName();
+            $filexiste = 'img-paginas/'.$nombre;
+
+                if (Storage::disk('public')->exists($filexiste)) {
+                    //si existe el nombre, agrega uno aleatorio
+                    $path = Storage::disk('public')->put('img-paginas/', $archivo);
+                }else{
+                    Storage::disk('public')->put('img-paginas/'.$nombre, file_get_contents($archivo));
+                    $path = 'img-paginas/'.$nombre;
+                }
+
+            $pagina->fill(['img' => $path])->save();
         }
-
         //archivos de pagina
         if($request->archivos){
             foreach ($request->archivos as $archivo) {
-                //$filename = $archivo->store('archivos-pagina');
-                $path_doc = Storage::disk('public')->put('archivos-pagina-'.$pagina->id, $archivo);
+
+                $nombre = $archivo->getClientOriginalName();
+                $filexiste = 'archivos-pagina-'.$pagina->id.'/'.$nombre;
+
+                if (Storage::disk('public')->exists($filexiste)) {
+                    //si existe el nombre, agrega uno aleatorio
+                    $path = Storage::disk('public')->put('archivos-pagina-'.$pagina->id.'/', $archivo);
+                }else{
+                    Storage::disk('public')->put('archivos-pagina-'.$pagina->id.'/'.$nombre, file_get_contents($archivo));
+                    $path = 'archivos-pagina-'.$pagina->id.'/'.$nombre;
+                }
+
+
                 ArchivoPagina::create([
                     'id_pagina' => $pagina->id,
-                    'file' => $path_doc
+                    'nombre' => $nombre,
+                    'file' => $path
                 ]);
             }
          }
@@ -93,7 +115,7 @@ class PaginaController extends Controller
     {
          //pagina
          $pagina = Pagina::find($id);
-         $this->authorize('pass', $pagina);
+         //$this->authorize('pass', $pagina);
 
 
          $archivos = ArchivoPagina::
@@ -115,7 +137,7 @@ class PaginaController extends Controller
     public function edit($id)
     {
         $pagina = Pagina::find($id);
-        $this->authorize('pass', $pagina);
+        //$this->authorize('pass', $pagina);
 
         //get documentos
         $archivos = ArchivoPagina::
@@ -138,24 +160,48 @@ class PaginaController extends Controller
     public function update(PaginaUpdateRequest $request, $id)
     {
         $pagina = Pagina::find($id);
-        $this->authorize('pass', $pagina);
+        //$this->authorize('pass', $pagina);
 
         $pagina->fill($request->all())->save();
 
          //archivo imagen
          if($request->file('img')){
-            $path = Storage::disk('public')->put('img-paginas', $request->file('img'));
-            $pagina->fill(['img' => asset($path)])->save();
-        }
+            $archivo = $request->file('img');
+
+            $nombre = $archivo->getClientOriginalName();
+            $filexiste = 'img-paginas/'.$nombre;
+
+                if (Storage::disk('public')->exists($filexiste)) {
+                    //si existe el nombre, agrega uno aleatorio
+                    $path = Storage::disk('public')->put('img-paginas/', $archivo);
+                }else{
+                    Storage::disk('public')->put('img-paginas/'.$nombre, file_get_contents($archivo));
+                    $path = 'img-paginas/'.$nombre;
+                }
+
+            $pagina->fill(['img' => $path])->save();
+         }
 
         //archivos de pagina
         if($request->archivos){
             foreach ($request->archivos as $archivo) {
-                //$filename = $archivo->store('archivos-pagina');
-                $path_doc = Storage::disk('public')->put('archivos-pagina-'.$pagina->id, $archivo);
+
+                $nombre = $archivo->getClientOriginalName();
+                $filexiste = 'archivos-pagina-'.$pagina->id.'/'.$nombre;
+
+                if (Storage::disk('public')->exists($filexiste)) {
+                    //si existe el nombre, agrega uno aleatorio
+                    $path = Storage::disk('public')->put('archivos-pagina-'.$pagina->id.'/', $archivo);
+                }else{
+                    Storage::disk('public')->put('archivos-pagina-'.$pagina->id.'/'.$nombre, file_get_contents($archivo));
+                    $path = 'archivos-pagina-'.$pagina->id.'/'.$nombre;
+                }
+
+
                 ArchivoPagina::create([
                     'id_pagina' => $pagina->id,
-                    'file' => $path_doc
+                    'nombre' => $nombre,
+                    'file' => $path
                 ]);
             }
          }
@@ -174,7 +220,7 @@ class PaginaController extends Controller
     {
         //
         $pagina = Pagina::find($id);;
-        $this->authorize('pass', $pagina);
+        //$this->authorize('pass', $pagina);
 
         $pagina->delete();
         return back()->with('info', 'Página eliminada correctamente');
@@ -186,7 +232,7 @@ class PaginaController extends Controller
 
         $pagina = Pagina::find($id);
 
-        $this->authorize('pass', $pagina);
+        //$this->authorize('pass', $pagina);
 
         $archivo->delete();
         return back()->with('info', 'Archivo eliminado correctamente');

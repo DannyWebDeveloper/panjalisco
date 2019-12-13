@@ -20,7 +20,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        $menus = Menu::where('estado', 'PUBLICADO')->get();
+        $menus = Menu::where('estado', 'PUBLICADO')->orderby('orden')->get();
         $submenus = Menu::where('estado', 'PUBLICADO')->where('nivel', 'Hijo')->orderby('orden')->get();
 
         $slugs = Menu::

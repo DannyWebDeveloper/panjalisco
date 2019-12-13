@@ -23,7 +23,10 @@ class InicioController extends Controller
 
         $menuss = Menu::where('estado', 'PUBLICADO')->get();
 
-        $submenus = Menu::where('estado', 'PUBLICADO')->where('nivel', 'Hijo')->orderby('orden')->get();
+        $submenus = Menu::join('menus_subs', 'menus_subs.id_hijo', '=', 'menus.id')
+        ->select('menus.id', 'menus.nombre', 'menus_subs.id_padre')
+        ->where('menus.estado', 'PUBLICADO')->where('menus.nivel', 'Hijo')->orderby('menus.orden')->get();
+        //$submenus = DB::table('menus_subs')->where
 
         $slugs = Menu::
         join('paginas', 'paginas.id', '=', 'menus.id_pagina')

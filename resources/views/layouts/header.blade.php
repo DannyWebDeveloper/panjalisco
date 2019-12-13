@@ -69,7 +69,7 @@
                           @if($sub->link_externo == null)
                             @foreach($slugs as $slug)
                                 @if($slug->id == $sub->id)
-                                <a class="dropdown-item" href="{{ $slug->slug }}">{{ $sub->nombre }}1111</a>
+                                <a class="dropdown-item" href="{{ $slug->slug }}">{{ $sub->nombre }}</a>
                                 @endif
                             @endforeach
                           @else
@@ -95,7 +95,7 @@
                                 @endif
                             @endforeach
                           @else
-                          <a class="dropdown-item" href="/{{ $sub->link_externo }}" target="_blank">{{ $sub->nombre }}</a>
+                          <a class="dropdown-item" href="{{ $sub->link_externo }}" target="_blank">{{ $sub->nombre }}</a>
                           @endif
                         @endif
 
@@ -115,7 +115,7 @@
                                 @endif
                             @endforeach
                           @else
-                          <a class="dropdown-item" href="/{{ $sub->link_externo }}" target="_blank">{{ $sub->nombre }}</a>
+                          <a class="dropdown-item" href="{{ $sub->link_externo }}" target="_blank">{{ $sub->nombre }}</a>
                           @endif
                         @endif
 

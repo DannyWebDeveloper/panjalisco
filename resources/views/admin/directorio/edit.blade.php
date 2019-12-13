@@ -4,7 +4,7 @@
 
     <div class="container justity-center">
         <div class="row">
-            <div class="col-md-10 col-offset-2">
+            <div class="col-md-12">
                 <div class="card card-default">
                     <div class="card-header">
                             Editar integrante

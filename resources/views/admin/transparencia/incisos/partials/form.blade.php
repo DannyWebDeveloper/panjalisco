@@ -29,9 +29,17 @@
 <div class="form-group">
 
     {{ Form::label('Fecha', 'Fecha de actualización') }}
-    {{ Form::text('Fecha', $inciso->Fecha,  ['class' => 'form-control datepicker' ]) }}
+    {{ Form::text('Fecha', $inciso->Fecha,  ['class' => 'form-control datepicker', 'id' => 'FechaActualizacion' ]) }}
 </div>
-
+<div class="form-group">
+    @if($inciso->FechaAuto == 1)
+                    {!! Form::label('FechaAuto', 'Fecha automatica', []) !!}
+                    {!! Form::checkbox('FechaAuto', $inciso->FechaAuto, null, [] ) !!}
+    @else
+                    {!! Form::label('FechaAuto', 'Fecha automatica', []) !!}
+                    {!! Form::checkbox('FechaAuto', null, false, [] ) !!}
+    @endif
+</div>
 <div class="form-group">
 
     {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
@@ -56,11 +64,7 @@
         jQuery(function($){
 
            // $( ".datepicker" ).focus(function(){
-                $( ".datepicker" ).datepicker({
-                changeMonth: true,
-                changeYear: true,
-                dateFormat: 'yy-mm-dd'
-                });
+
             //});
             $('input').attr('autocomplete','off');
     });

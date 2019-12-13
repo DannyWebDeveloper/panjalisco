@@ -9,12 +9,20 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMailContacto;
 
 use App\Contacto;
+use App\Directorio;
+
 
 class WebsController extends Controller
 {
     //aviso de privaacidad
     public function aviso(){
         return view('web.avisodeprivacidad');
+    }
+
+    //directorio
+    public function directorio(){
+        $directorio = Directorio::all();
+        return view('web.directorio', compact(['directorio']) );
     }
 
     //formulario de contacto

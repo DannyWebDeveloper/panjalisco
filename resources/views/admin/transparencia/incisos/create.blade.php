@@ -39,18 +39,22 @@
                         {{ Form::label('Orden', 'Orden') }}
                         {{ Form::text('Orden', '', ['class' => 'form-control']) }}
                     </div>
-                    <div class="form-group">
 
-                        {{ Form::label('Fecha', 'Fecha de actualización') }}
-                        {{ Form::text('Fecha', '',  ['class' => 'form-control datepicker' ]) }}
-                    </div>
 
                     <div class="form-group">
                         {{ Form::label('Link', 'Link') }}
                         {{ Form::text('Link', null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
+                        {{ Form::label('Fecha', 'Fecha de actualización') }}
+                        {{ Form::text('Fecha', '',  ['class' => 'form-control datepicker', 'id' => 'FechaActualizacion']) }}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('FechaAuto', 'Fecha automatica', []) !!}
+                        {!! Form::checkbox('FechaAuto', null, false, [] ) !!}
+                    </div>
 
+                    <div class="form-group">
                         {{ Form::label('Archivo', 'Archivo') }}
                         {{ Form::file('Archivo', ['class' => 'form-control' ]) }}
                     </div>
@@ -80,12 +84,12 @@
     <script>
         jQuery(function($){
            // $( ".datepicker" ).focus(function(){
-                $( ".datepicker" ).datepicker({
+                       //});
+            $( "#FechaActualizacion" ).datepicker({
                 changeMonth: true,
                 changeYear: true,
                 dateFormat: 'yy-mm-dd'
-                });
-            //});
+            });
             $('input').attr('autocomplete','off');
     });
         </script>

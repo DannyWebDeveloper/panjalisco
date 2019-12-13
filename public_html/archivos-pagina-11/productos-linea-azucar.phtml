@@ -1,0 +1,69 @@
+<?php
+// some helpers
+$_helper = $this->helper('catalog/output');
+// $storeId = Mage::app()->getStore()->getId();
+$storeId = 3;
+$catalog = $this->getLayout()->createBlock('catalog/product_list')->setStoreId($storeId);
+
+$skuList = array('PT00021','PT00205', 'PT00150');
+$collection = Mage::getModel('catalog/product')
+->getCollection()
+->addAttributeToFilter('sku', array('in' => $skuList));
+ 
+
+// if no products are currently featured, display some text
+if (!$collection->count()) :
+ ?>
+<?php else : ?>
+
+<div class="block block-list nature-title">
+<div class="container ">
+  <div  id="owl-productos" class="grande">
+      <?php
+      $_collectionSize = $collection->count();
+      foreach ($collection as $_product) :
+        $_product = Mage::getModel('catalog/product')->setStoreId($storeId)->load($_product->getId());
+        ?>
+      <div class="item">
+          <center>
+            <div class="item-image" style="">
+              <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class=""><img class="lol-img" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(150); ?>" width="150" height="150" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+            </div>
+            <div class="item-title" style="width:100%; height:auto;">
+              <h2 class="product-name-slider"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+            </div>
+          </center>
+        </div>
+    <?php endforeach ?>
+    </div>
+    </div>
+
+    </div>
+
+    <script type="text/javascript">
+
+
+    jQuery(document).ready(function() {
+      var owl = jQuery("#owl-productos");
+      jQuery("#owl-productos").owlCarousel({
+
+
+
+    navigation : true, // Show next and prev buttons
+    slideSpeed : 300,
+    paginationSpeed : 400,
+    autoPlay: 10000,
+    // singleItem:true,
+    responsive:true,
+    items : 4 ,
+    pagination: false,
+    navigation:true,
+    navigationText: [
+        "<i class='material-icons'></i>",
+        "<i class='material-icons'></i>"
+    ]
+      });
+
+    });
+    </script>
+  <?php endif ?>
